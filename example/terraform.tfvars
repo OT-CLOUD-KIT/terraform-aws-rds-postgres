@@ -1,9 +1,9 @@
 region                  = "us-east-1"
 identifier              = "ntd-postgres"
-db_name                 = "ntddb"
+db_name                 = "postgresdb"
 username                = "postgres"
 password                = "Postgres123"
-db_subnet_group_name    = "ntd-db-subnet-group"
+db_subnet_group_name    = "postgres-db-subnet-group"
 subnet_ids              = ["subnet-08a2aa30dbc179a2b", "subnet-0a49bf4221b5f0107"]
 security_group_ids      = ["sg-04fb2f273d8865af3"]
 engine_version          = "16"
