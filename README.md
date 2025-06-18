@@ -1,10 +1,11 @@
 # Terraform-aws-rds-postgres
 
- ## PostgreSQL RDS Module
-This Terraform module provisions a fully managed PostgreSQL RDS instance on AWS, including a subnet group and essential configurations.
+This Terraform module provisions a fully managed PostgreSQL RDS instance on AWS. It includes the creation of a DB subnet group and essential configurations for high availability, performance, and security.
+
 
 ## Architecture
 ![postge drawio](https://github.com/user-attachments/assets/2844974b-ec74-4184-bcdd-a29c6c40901f)
+
 ---
 
 
@@ -45,6 +46,15 @@ module "postgres_rds" {
 
 > **Note:**  
 > The above example demonstrates how to use the module. All variables, resources, and outputs used here are already defined within this module.
+
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_db_subnet_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_subnet_group) | resource |
+| [aws_db_instance.postgres](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance) | resource |
+
 
 ## Input Variables
 
