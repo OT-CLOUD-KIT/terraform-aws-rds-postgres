@@ -48,39 +48,40 @@ module "postgres_rds" {
 
 ## Input Variables
 
-| Name                      | Description                                                       | Type            | Default             | Required |
-|---------------------------|-------------------------------------------------------------------|------------------|---------------------|----------|
-| `engine_version`          | PostgreSQL engine version (e.g., `"15.3"`)                        | `string`         | `"15.3"`            | Yes   |
-| `identifier_prefix_name`  | Prefix for the RDS instance ID                                    | `string`         | `"postgres"`        | No    |
-| `db_name`                 | Name of the initial database                                      | `string`         | `"app_db"`          | Yes   |
-| `username`                | Master username                                                   | `string`         | `"admin"`           | Yes   |
-| `password`                | Master password (should be stored securely)                       | `string`         | `"Opstree#12345"`   | Yes   |
-| `instance_class`          | Instance type (e.g., `db.t3.micro`)                               | `string`         | `"db.t3.micro"`     | Yes   |
-| `allocated_storage`       | Allocated storage in GB                                           | `number`         | `20`                | Yes   |
-| `storage_type`            | Storage type (`gp2`, `gp3`, `io1`)                                | `string`         | `"gp3"`             | No    |
-| `multi_az`                | Enable Multi-AZ deployment                                        | `bool`           | `false`             | No    |
-| `public_access`           | Whether the DB is publicly accessible                             | `bool`           | `false`             |  No    |
-| `skip_final_snapshot`     | Skip final snapshot on deletion                                   | `bool`           | `true`              | No    |
-| `delete_automated_backups`| Delete automated backups on instance deletion                     | `bool`           | `true`              | No    |
-| `database_subnet_ids`     | Subnet IDs for the DB subnet group                                | `list(string)`   | `[]`                | Yes   |
-| `database_security_groups`| VPC security group IDs for the DB instance                        | `list(string)`   | `[]`                | Yes   |
-| `primary_subnet_name`     | Name of the DB subnet group                                       | `string`         | `"postgres-subnet"` | Yes   |
-| `tags`                    | Tags to apply to all resources                                    | `map(string)`    | `{}`                | No    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_engine_version"></a> [`engine_version`](#input_engine_version) | PostgreSQL engine version (e.g., `"15.3"`) | `string` | `"15.3"` | Yes |
+| <a name="input_identifier_prefix_name"></a> [`identifier_prefix_name`](#input_identifier_prefix_name) | Prefix for the RDS instance ID | `string` | `"postgres"` | No |
+| <a name="input_db_name"></a> [`db_name`](#input_db_name) | Name of the initial database | `string` | `"app_db"` | Yes |
+| <a name="input_username"></a> [`username`](#input_username) | Master username | `string` | `"admin"` | Yes |
+| <a name="input_password"></a> [`password`](#input_password) | Master password (should be stored securely) | `string` | `"Opstree#12345"` | Yes |
+| <a name="input_instance_class"></a> [`instance_class`](#input_instance_class) | Instance type (e.g., `db.t3.micro`) | `string` | `"db.t3.micro"` | Yes |
+| <a name="input_allocated_storage"></a> [`allocated_storage`](#input_allocated_storage) | Allocated storage in GB | `number` | `20` | Yes |
+| <a name="input_storage_type"></a> [`storage_type`](#input_storage_type) | Storage type (`gp2`, `gp3`, `io1`) | `string` | `"gp3"` | No |
+| <a name="input_multi_az"></a> [`multi_az`](#input_multi_az) | Enable Multi-AZ deployment | `bool` | `false` | No |
+| <a name="input_public_access"></a> [`public_access`](#input_public_access) | Whether the DB is publicly accessible | `bool` | `false` | No |
+| <a name="input_skip_final_snapshot"></a> [`skip_final_snapshot`](#input_skip_final_snapshot) | Skip final snapshot on deletion | `bool` | `true` | No |
+| <a name="input_delete_automated_backups"></a> [`delete_automated_backups`](#input_delete_automated_backups) | Delete automated backups on instance deletion | `bool` | `true` | No |
+| <a name="input_database_subnet_ids"></a> [`database_subnet_ids`](#input_database_subnet_ids) | Subnet IDs for the DB subnet group | `list(string)` | `[]` | Yes |
+| <a name="input_database_security_groups"></a> [`database_security_groups`](#input_database_security_groups) | VPC security group IDs for the DB instance | `list(string)` | `[]` | Yes |
+| <a name="input_primary_subnet_name"></a> [`primary_subnet_name`](#input_primary_subnet_name) | Name of the DB subnet group | `string` | `"postgres-subnet"` | Yes |
+| <a name="input_tags"></a> [`tags`](#input_tags) | Tags to apply to all resources | `map(string)` | `{}` | No |
 
 ---
 
-##  Outputs
+## Outputs
 
-| Output Name              | Description                                |
-|--------------------------|--------------------------------------------|
-| `db_endpoint`            | DNS endpoint of the PostgreSQL RDS instance |
-| `db_instance_arn`        | ARN of the PostgreSQL RDS instance          |
-| `db_instance_identifier` | RDS instance identifier                     |
+| Name | Description |
+|------|-------------|
+| <a name="output_db_endpoint"></a> [`db_endpoint`](#output_db_endpoint) | DNS endpoint of the PostgreSQL RDS instance |
+| <a name="output_db_instance_arn"></a> [`db_instance_arn`](#output_db_instance_arn) | ARN of the PostgreSQL RDS instance |
+| <a name="output_db_instance_identifier"></a> [`db_instance_identifier`](#output_db_instance_identifier) | RDS instance identifier |
+
 
 ---
 
 
 ## Contributors
 
-- Piyush Upadhyay
-- Nikita Joshi
+- [Piyush Upadhyay](https://github.com/piiiyuushh)
+- [Nikita Joshi](https://github.com/jnikita19)
