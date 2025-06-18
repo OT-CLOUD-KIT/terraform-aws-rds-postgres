@@ -4,7 +4,7 @@ This Terraform module provisions a fully managed PostgreSQL RDS instance on AWS.
 
 
 ## Architecture
-![postge drawio](https://github.com/user-attachments/assets/2844974b-ec74-4184-bcdd-a29c6c40901f)
+![updated_postgres drawio](https://github.com/user-attachments/assets/4562d8fe-3a14-4717-87f2-cf9f658c9cda)
 
 ---
 
