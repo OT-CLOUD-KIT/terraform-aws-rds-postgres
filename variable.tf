@@ -25,21 +25,21 @@ variable "security_group_id" {
   default     = null
 }
 
-variable "sg_name" {
-  description = "Name of the security group (used only if create_sg = true)"
-  type        = string
-  default     = "postgresql-rds-sg"
-}
+# variable "sg_name" {
+#   description = "Name of the security group (used only if create_sg = true)"
+#   type        = string
+#   default     = "postgresql-rds-sg"
+# }
 
-variable "db_subnet_group_name" {
-  description = "Name for the DB subnet group"
-  type        = string
-}
+# variable "db_subnet_group_name" {
+#   description = "Name for the DB subnet group"
+#   type        = string
+# }
 
-variable "identifier" {
-  description = "Unique identifier for the RDS instance"
-  type        = string
-}
+# variable "identifier" {
+#   description = "Unique identifier for the RDS instance"
+#   type        = string
+# }
 
 variable "engine_version" {
   description = "PostgreSQL engine version"
@@ -127,7 +127,57 @@ variable "deletion_protection" {
   type        = bool
 }
 
-variable "tags" {
-  description = "Tags to apply to all resources"
-  type        = map(string)
+# variable "tags" {
+#   description = "Tags to apply to all resources"
+#   type        = map(string)
+# }
+
+
+################################### Naming convention variables #########################################
+
+variable "bu" {
+  description = "Business unit name (e.g., BP, GURUKU). Max 6 characters."
+  type        = string
+
+  validation {
+    condition     = length(var.bu) <= 6
+    error_message = "The business unit name must be less than or equal to 6 characters."
+  }
 }
+
+variable "program" {
+  description = "Name of the program (e.g., OT, BP)."
+  type        = string
+}
+
+variable "app" {
+  description = "Application name (e.g., network, shared). Max 6 characters."
+  type        = string
+
+  validation {
+    condition     = length(var.app) <= 6
+    error_message = "The app name must be less than or equal to 6 characters."
+  }
+}
+
+variable "env" {
+  description = "Environment code: 'd' (dev), 'p' (prod), 'q' (qa), 's' (stage), 'g' (global)."
+  type        = string
+
+  validation {
+    condition     = contains(["d", "p", "q", "s", "g"], var.env)
+    error_message = "env must be one of 'd', 'p', 'q', 's', 'g'."
+  }
+}
+
+variable "team" {
+  description = "Team email responsible for the application (e.g., digitalops@gehealthcare.com)."
+  type        = string
+}
+
+variable "region" {
+  description = "AWS region (e.g., us-east-1, ap-south-1)."
+  type        = string
+  default = "us-east-1"
+}
+

@@ -7,10 +7,15 @@ module "postgres_rds" {
 
   create_sg                  = var.create_sg
   security_group_id          = var.security_group_id
-  sg_name                    = var.sg_name
 
-  db_subnet_group_name       = var.db_subnet_group_name
-  identifier                 = var.identifier
+
+ # Naming and Tagging
+  bu                = var.bu
+  program           = var.program
+  app               = var.app
+  team              = var.team
+  env               = var.env
+
   db_name                    = var.db_name
   username                   = var.username
   password                   = var.password
@@ -29,5 +34,24 @@ module "postgres_rds" {
   skip_final_snapshot        = var.skip_final_snapshot
   deletion_protection        = var.deletion_protection
 
-  tags = var.tags
+}
+
+
+module "naming" {
+  source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=dev"
+  bu       = var.bu
+  env      = var.env
+  app      = var.app
+  resource = var.resource
+}
+
+module "standard_tags" {
+  source = "git@github.com:OT-CLOUD-KIT/terraform-aws-standard-tagging.git?ref=dev"
+
+  bu      = var.bu
+  program = var.program
+  app     = var.app
+  team    = var.team
+  region  = var.region
+  env     = var.env
 }

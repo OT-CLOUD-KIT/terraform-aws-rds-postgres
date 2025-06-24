@@ -1,7 +1,7 @@
 resource "aws_security_group" "rds_sg" {
   count       = var.create_sg ? 1 : 0
 
-  name        = var.sg_name
+  name        = "${local.base_name}-rds-sg"
   description = "Security group for PostgreSQL RDS"
   vpc_id      = var.vpc_id
 
@@ -22,18 +22,28 @@ resource "aws_security_group" "rds_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = var.tags
-}
+  tags = merge(
+    {
+      Name = "${local.base_name}-rds-sg"
+    },
+    local.common_tags
+  )
+  }
 
 resource "aws_db_subnet_group" "postgres_subnet_group" {
-  name       = var.db_subnet_group_name
+  name       = "${local.base_name}-db-subnet-group"
   subnet_ids = var.subnet_ids
 
-  tags = var.tags
-}
+tags = merge(
+    {
+      Name = "${local.base_name}-db-subnet-group"
+    },
+    local.common_tags
+  )
+  }
 
 resource "aws_db_instance" "postgres" {
-  identifier              = var.identifier
+  identifier              = "${local.base_name}-postgres"
   engine                  = "postgres"
   engine_version          = var.engine_version
   instance_class          = var.instance_class
@@ -54,5 +64,11 @@ resource "aws_db_instance" "postgres" {
   auto_minor_version_upgrade = var.auto_minor_version_upgrade
   skip_final_snapshot     = var.skip_final_snapshot
   deletion_protection     = var.deletion_protection
-  tags                    = var.tags
+
+  tags = merge(
+    {
+      Name = "${local.base_name}-postgres"
+    },
+    local.common_tags
+  )
 }
