@@ -15,7 +15,7 @@ This Terraform module provisions a fully managed PostgreSQL RDS instance on AWS.
 ```hcl
 
 module "postgres_rds" {
-  source = "../" 
+  source = "OT-CLOUD-KIT/terraform-aws-rds-postgres" 
 
   vpc_id        = "vpc-0123456789abcdef0"
 

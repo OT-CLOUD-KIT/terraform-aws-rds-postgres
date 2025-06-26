@@ -1,5 +1,5 @@
 module "postgres_rds" {
-  source = "../"
+  source = "git@github.com:OT-CLOUD-KIT/terraform-aws-rds-postgres.git?ref=feature"
 
   # VPC and subnet setup
   vpc_id            = var.vpc_id

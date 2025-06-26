@@ -1,8 +1,16 @@
+vpc_id     = "vpc-0b2e7e2387bf08301"
+region  = "us-east-1"
+
+subnet_ids = [
+  "subnet-034233dfae169f63f",
+  "subnet-07d80237e1856b427"
+]
+
+allowed_ports              = [5432]
 create_sg                  = true
-# sg_name                    = "ntd-postgres-sg"
-security_group_id       =  null
-# db_subnet_group_name       = "postgres-db-subnet-group-01"
-# identifier                 = "ntd-postgres"
+security_group_id          = null
+
+
 db_name                    = "postgresdb"
 username                   = "postgres"
 password                   = "Postgres123"
@@ -20,7 +28,7 @@ maintenance_window         = "sun:05:00-sun:06:00"
 auto_minor_version_upgrade = true
 skip_final_snapshot        = true
 deletion_protection        = false
-allowed_ports              = [5432, 5433]
+
 
 
 
@@ -28,10 +36,10 @@ allowed_ports              = [5432, 5433]
 
 random_alphanumeric_len = 4
 
-bu       = "pcs"
-app      = "data"
+bu       = "ot"
+app      = "bp"
 env      = "d"
-resource = "databse"
+resource = "database"
 
 special = false
 upper   = false
@@ -39,5 +47,5 @@ number  = true
 
 gen_no_of_names = 1
 
-team    = "ot-cloud-infra"
+team    = "infra"
 program = "ot"

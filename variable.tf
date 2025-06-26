@@ -1,16 +1,19 @@
 variable "vpc_id" {
   description = "VPC ID where RDS and security group will be created or used"
   type        = string
+  default = "vpc-0b2e7e2387bf08301"
 }
 
 variable "subnet_ids" {
   description = "List of private subnet IDs for DB subnet group"
   type        = list(string)
+  default = [ "subnet-034233dfae169f63f" ,"subnet-07d80237e1856b427" ]
 }
 
 variable "allowed_ports" {
   description = "List of allowed ingress ports for the RDS security group"
   type        = list(number)
+  default = [ 5432 ]
 }
 
 variable "create_sg" {
@@ -25,76 +28,72 @@ variable "security_group_id" {
   default     = null
 }
 
-# variable "sg_name" {
-#   description = "Name of the security group (used only if create_sg = true)"
-#   type        = string
-#   default     = "postgresql-rds-sg"
-# }
-
-# variable "db_subnet_group_name" {
-#   description = "Name for the DB subnet group"
-#   type        = string
-# }
-
-# variable "identifier" {
-#   description = "Unique identifier for the RDS instance"
-#   type        = string
-# }
 
 variable "engine_version" {
   description = "PostgreSQL engine version"
   type        = string
+  default = "16"
 }
 
 variable "instance_class" {
   description = "Instance class for the RDS instance (e.g., db.t3.micro)"
   type        = string
+  default = "db.t3.micro"
 }
 
 variable "db_name" {
   description = "Initial database name to create"
   type        = string
+  default = "postgresdb"
 }
 
 variable "username" {
   description = "Master username for the database"
   type        = string
+  default = "postgres"
 }
 
 variable "password" {
   description = "Master password for the database"
   type        = string
   sensitive   = true
+  default = "Postgres123"
 }
 
 variable "allocated_storage" {
   description = "Initial storage size in GB"
   type        = number
+  default = 20
 }
 
 variable "max_allocated_storage" {
   description = "Maximum storage size in GB"
   type        = number
+  default = 100
 }
 
 variable "storage_type" {
   description = "Storage type (e.g., gp2, gp3)"
   type        = string
+  default = "gp2"
 }
 
 variable "storage_encrypted" {
   description = "Whether to enable encryption for the storage"
   type        = bool
+  default = true
 }
 
 variable "publicly_accessible" {
   description = "Whether the DB instance is publicly accessible"
   type        = bool
+  default = false
 }
 
 variable "multi_az" {
   description = "Whether to enable Multi-AZ deployment"
   type        = bool
+  default = false
 }
 
 variable "backup_retention_period" {
@@ -120,17 +119,15 @@ variable "auto_minor_version_upgrade" {
 variable "skip_final_snapshot" {
   description = "Whether to skip final snapshot on deletion"
   type        = bool
+  default = false
 }
 
 variable "deletion_protection" {
   description = "Whether to enable deletion protection"
   type        = bool
+  default = false
 }
 
-# variable "tags" {
-#   description = "Tags to apply to all resources"
-#   type        = map(string)
-# }
 
 
 ################################### Naming convention variables #########################################
