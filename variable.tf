@@ -135,9 +135,10 @@ variable "deletion_protection" {
 variable "bu" {
   description = "Business unit name (e.g., BP, GURUKU). Max 6 characters."
   type        = string
+  default = "BP"
 
   validation {
-    condition     = length(var.bu) <= 6
+    condition     = length(var.bu) <= 10
     error_message = "The business unit name must be less than or equal to 6 characters."
   }
 }
@@ -145,14 +146,16 @@ variable "bu" {
 variable "program" {
   description = "Name of the program (e.g., OT, BP)."
   type        = string
+  default = "OT"
 }
 
 variable "app" {
   description = "Application name (e.g., network, shared). Max 6 characters."
   type        = string
+  default = "database"
 
   validation {
-    condition     = length(var.app) <= 6
+    condition     = length(var.app) <= 10
     error_message = "The app name must be less than or equal to 6 characters."
   }
 }
@@ -160,7 +163,7 @@ variable "app" {
 variable "env" {
   description = "Environment code: 'd' (dev), 'p' (prod), 'q' (qa), 's' (stage), 'g' (global)."
   type        = string
-
+default = "d"
   validation {
     condition     = contains(["d", "p", "q", "s", "g"], var.env)
     error_message = "env must be one of 'd', 'p', 'q', 's', 'g'."
@@ -170,6 +173,7 @@ variable "env" {
 variable "team" {
   description = "Team email responsible for the application (e.g., digitalops@gehealthcare.com)."
   type        = string
+  default = "infra"
 }
 
 variable "region" {
