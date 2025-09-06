@@ -1,22 +1,3 @@
-module "naming" {
-  source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=dev"
-  bu       = var.bu
-  env      = var.env
-  app      = var.app
-  resource = var.resource
-}
-
-module "standard_tags" {
-  source = "git@github.com:OT-CLOUD-KIT/terraform-aws-standard-tagging.git?ref=dev"
-
-  bu      = var.bu
-  program = var.program
-  app     = var.app
-  team    = var.team
-  region  = var.region
-  env     = var.env
-}
-
 
 module "postgres_rds" {
   source = "git@github.com:OT-CLOUD-KIT/terraform-aws-rds-postgres.git?ref=feature"
@@ -29,13 +10,9 @@ module "postgres_rds" {
   security_group_id          = var.security_group_id
 
 
- # Naming and Tagging
-  bu                = var.bu
-  program           = var.program
-  app               = var.app
-  team              = var.team
-  env               = var.env
-
+env = var.env
+app = var.app
+owner = var.owner
   db_name                    = var.db_name
   username                   = var.username
   password                   = var.password

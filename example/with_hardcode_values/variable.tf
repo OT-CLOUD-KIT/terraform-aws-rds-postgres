@@ -144,107 +144,23 @@ variable "deletion_protection" {
 ################### Naming Convention Inputs ###################
 
 variable "env" {
-  description = "Environment short name. Must be one of: d (dev), p (prod), q (qa), s (stage), g (global)."
-  type        = string
-  validation {
-    condition     = contains(["d", "p", "q", "s", "g"], var.env)
-    error_message = "env must be one of 'd', 'p', 'q', 's', 'g'."
-  }
+  type = string
+  default = "dev"
+  
 }
 
-variable "bu" {
-  description = "Business unit name (e.g., pcs, ultrasound). Max 5 characters."
-  type        = string
-  validation {
-    condition     = length(var.bu) <= 10
-    error_message = "The business unit name must be less than or equal to 5 characters."
-  }
+variable "owner" {
+  type = string
+  default = "opstree"
 }
 
 variable "app" {
-  description = "Application name (e.g., network, shared). Max 6 characters."
-  type        = string
-  validation {
-    condition     = length(var.app) <= 10
-    error_message = "The app name must be less than or equal to 6 characters."
-  }
-}
-
-variable "program" {
-  description = "Program name (e.g., ot-cloud-kit, otx)."
-  type        = string
-}
-
-variable "resource" {
-  description = "Resource name (e.g., eks, efs, ecr). Max 8 characters."
-  type        = string
-  default     = ""
-  validation {
-    condition     = length(var.resource) <= 15
-    error_message = "The resource name must be less than or equal to 8 characters."
-  }
-}
-
-
-
-variable "team" {
-  description = "Team owner email (e.g., digitalops@gehealthcare.com)"
-  type        = string
+  type = string
+  default = "otcloud-kit"
+  
 }
 
 variable "region" {
-  description = "AWS region (e.g., us-east-1)"
-  type        = string
-  default = "us-east-1"
+  type = string
+default = "us-east-1"
 }
-
-################### Optional Random Name Generator ###################
-
-
-
-variable "enabled_features" {
-  description = "Optional features enabled for the module"
-  type        = list(string)
-  default     = []
-}
-
-variable "create" {
-  description = "Controls if resources should be created (affects nearly all resources)"
-  type        = bool
-  default     = true
-}
-
-variable "random_alphanumeric_len" {
-  description = "The length of random alphanumeric string desired. Min: 1, Max: 4."
-  type        = number
-  default     = 2
-  validation {
-    condition     = var.random_alphanumeric_len >= 1 && var.random_alphanumeric_len <= 4
-    error_message = "The length must be between 1 and 4."
-  }
-}
-
-variable "special" {
-  description = "Include special characters in generated names"
-  type        = bool
-  default     = false
-}
-
-variable "upper" {
-  description = "Include uppercase characters in generated names"
-  type        = bool
-  default     = false
-}
-
-variable "number" {
-  description = "Include numbers in generated names"
-  type        = bool
-  default     = true
-}
-
-variable "gen_no_of_names" {
-  description = "Number of names to generate"
-  type        = number
-  default     = 1
-}
-

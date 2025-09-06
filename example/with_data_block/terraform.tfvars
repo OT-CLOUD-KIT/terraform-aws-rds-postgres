@@ -24,18 +24,7 @@ allowed_ports              = [5432, 5433]
 
 ################# Naming Convension #####################
 
-random_alphanumeric_len = 4
-
-bu       = "ot"
-app      = "bp"
-env      = "d"
-resource = "database"
-
-special = false
-upper   = false
-number  = true
-
-gen_no_of_names = 1
-
-team    = "infra"
-program = "ot"
+env = "dev"
+app = "otcloud-kit"
+owner = "opstree"
+region = "us-east-1"
