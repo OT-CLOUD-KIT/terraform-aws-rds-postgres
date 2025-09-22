@@ -1,0 +1,30 @@
+create_sg                  = true
+security_group_id       =  null
+
+db_name                    = "postgresdb"
+username                   = "postgres"
+password                   = "Postgres123"
+engine_version             = "16"
+instance_class             = "db.t3.micro"
+allocated_storage          = 20
+max_allocated_storage      = 100
+storage_type               = "gp2"
+storage_encrypted          = true
+publicly_accessible        = false
+multi_az                   = false
+backup_retention_period    = 7
+backup_window              = "03:00-04:00"
+maintenance_window         = "sun:05:00-sun:06:00"
+auto_minor_version_upgrade = true
+skip_final_snapshot        = true
+deletion_protection        = false
+allowed_ports              = [5432, 5433]
+
+
+
+################# Naming Convension #####################
+
+env = "dev"
+app = "otcloud-kit"
+owner = "opstree"
+region = "us-east-1"
